@@ -1,13 +1,13 @@
-import urllib
-
-from rest_framework.response import Response
-from rest_framework.views import APIView
 import secret
 import requests
-import xmltodict as xmltodict
-from rest_framework.utils import json
+import urllib
 
-# 검색, 추천, 필터링 요청 api
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.utils import json
+import xmltodict as xmltodict
+
+
 # 사용자가 선택한 검색조건으로 parmas 매개변수를 받아 open API 요청
 def requestPlantList(params):
     # open api url
@@ -52,6 +52,7 @@ def requestPlantList(params):
 
     return result_list
 
+# 식물 상세 정보 OPEN API 요청
 def requestPlantDetails(plantID):
     # open api url
     url = 'http://api.nongsaro.go.kr/service/dryGarden/dryGardenDtl'
@@ -66,27 +67,38 @@ def requestPlantDetails(plantID):
     jsonDump = json.dumps(xpars)
     jsonBody = json.loads(jsonDump)
 
-    r = {}
-    item = jsonBody['response']['body']['item']
-    r['plantID'] = item['cntntsNo']
-    r['plantNameKR'] = item['cntntsSj']
-    r['plantNameEN'] = item['scnm']
-    r['plantImgUrl'] = item['mainImgUrl1']
-    r['plantDescription'] = item['clCodeDc']
-    r['countryOfOrigin'] = item['orgplce']
-    r['flowerExist'] = item['flwrInfo']
-    r['characteristic'] = item['chartrInfo']
-    r['rootForm'] = item['rdxStleNm']
-    r['growthPattern'] = item['grwtInfo']
-    r['growthRate'] = item['grwtseVeNm']
-    r['lightAmount'] = item['lighttInfo']
-    r['watering'] = item['waterCycleInfo']
-    r['demangeOfBugs'] = item['dlthtsInfo']
-    r['manageLevel'] = item['manageLevelNm']
-    r['manageDemand'] = item['manageDemandNm']
-    r['fertilizer'] = item['frtlzrInfo']
-    r['placeOfDeployment'] = item['batchPlaceInfo']
-    r['plantingTip'] = item['tipInfo']
+    resultCode = jsonBody['response']['header']['resultCode']
+    # 상세 정보가 없는 경우(잘못된 plantID로 요청보낸 경우)
+    r={}
+    if resultCode == '91':
+        return r
+    else:
+        item = jsonBody['response']['body']['item']
+
+        r['plantID'] = item['cntntsNo'] #식물 ID
+        r['plantNameKR'] = item['cntntsSj'] #식물명(한글)
+        str = item['scnm']  # 식물명(영어)
+        new_str = str.replace('<i>', '')
+        new_str = new_str.replace('</i>', '')
+        r['plantNameEN'] = new_str
+        r['plantImgUrl'] = item['mainImgUrl1'] #식물 img
+        r['plantDescription'] = item['clCodeDc'] #과 설명
+        r['countryOfOrigin'] = item['orgplce'] #원산지
+        r['flowerExist'] = item['flwrInfo'] #꽃
+        r['characteristic'] = item['chartrInfo'] #특성
+        r['rootForm'] = item['rdxStleNm'] #뿌리형태
+        r['growthPattern'] = item['grwtInfo'] #생장형
+        r['growthRate'] = item['grwtseVeNm'] #생장속도
+        r['lightAmount'] = item['lighttInfo'] #광
+        r['watering'] = item['waterCycleInfo'] #물주기
+        r['demangeOfBugs'] = item['dlthtsInfo'] #병충해
+        r['manageLevel'] = item['manageLevelNm'] #관리수준
+        r['manageDemand'] = item['manageDemandNm'] #관리요구도
+        r['fertilizer'] = item['frtlzrInfo'] #비료
+        bstr = item['batchPlaceInfo'] #배치 장소
+        new_bstr = bstr.replace('<br />', '')
+        r['placeOfDeployment'] = new_bstr
+        r['plantingTip'] = item['tipInfo'] #팁
 
     return r
 
@@ -125,22 +137,29 @@ class SearchResultList(APIView):
         # 검색 결과가 있는 경우 해당 결과들이 추가된 리스트 return
         if result_list:
             return Response(result_list)
-
         #검색  결과가 없는 경우 None을 return
         return Response({
             "returnCode": "None"
         })
 
-
+# 상세 정보 요청 API
 class PlantDetails(APIView):
     def get(self, request):
         _plantID = request.query_params.get('plantID')
-
+        # open API 요청
         plantDetails = requestPlantDetails(_plantID)
 
+        # 상세 정보 조회 결과가 있는 경우 해당 결과들이 추가된 리스트 return
         if plantDetails:
             return Response(plantDetails)
-
+        #검색  결과가 없는 경우 None을 return
         return Response({
             "returnCode": "None"
         })
+
+class Login(APIView):
+    def post(self, request):
+        userID = request.data.get('userID')
+        password = request.data.get('password')
+
+        return Response({})
