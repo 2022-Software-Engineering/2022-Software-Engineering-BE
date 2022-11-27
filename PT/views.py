@@ -7,33 +7,48 @@ import requests
 import xmltodict as xmltodict
 from rest_framework.utils import json
 
-
+# 검색, 추천, 필터링 요청 api
+# 사용자가 선택한 검색조건으로 parmas 매개변수를 받아 open API 요청
 def requestPlantList(params):
     # open api url
     url = 'http://api.nongsaro.go.kr/service/dryGarden/dryGardenList'
-
     # open api request
     response = requests.get(url, params=params)
-
     # xml to json
     xpars = xmltodict.parse(response.text)
     jsonDump = json.dumps(xpars)
     jsonBody = json.loads(jsonDump)
+    # parsing
+    totalCount = jsonBody['response']['body']['items']['totalCount']
 
     result_list = list()
-    items = jsonBody['response']['body']['items']['item']
-    print(items)
-    print(len(items))
-    print(len(jsonBody['response']['body']['items']))
-    print("a")
-    print(jsonBody['response']['body']['items'])
-    for item in items:
-        r = {}
-        r['plantID'] = item['cntntsNo']
-        r['plantNameKR'] = item['cntntsSj']
-        r['plantNameEN'] = item['scnm']
-        r['plantImgUrl'] = item['imgUrl1']
-        result_list.append(r)
+    # 검색 결과 수가 0인 경우 빈 return_list return
+    if totalCount != '0':
+        items = jsonBody['response']['body']['items']['item']
+        # 검색 결과 수가 1인 경우
+        if totalCount == '1':
+            r = {}
+            r['plantID'] = items['cntntsNo'] # 식물 ID
+            r['plantNameKR'] = items['cntntsSj'] # 식물명(한글)
+            str = items['scnm'] # 식물명(영어)
+            new_str = str.replace('<i>', '')
+            new_str = new_str.replace('</i>', '')
+            r['plantNameEN'] = new_str
+            r['plantImgUrl'] = items['imgUrl1'] # 식물 img
+            result_list.append(r)
+        # 검색 결과 수가 2 이상인 경우
+        else:
+            for item in items:
+                r = {}
+                r['plantID'] = item['cntntsNo'] # 식물 ID
+                r['plantNameKR'] = item['cntntsSj'] # 식물명(한글)
+                str = item['scnm']  # 식물명(영어)
+                new_str = str.replace('<i>', '')
+                new_str = new_str.replace('</i>', '')
+                r['plantNameEN'] = new_str
+                r['plantImgUrl'] = item['imgUrl1']
+                result_list.append(r)
+        return result_list
 
     return result_list
 
@@ -104,7 +119,6 @@ class SearchResultList(APIView):
         if _manageDemand != '0':
             params['manageDemandCodeVal'] = _manageDemand
 
-        print(params)
         #openAPI 요청
         result_list = requestPlantList(params)
 
@@ -130,4 +144,3 @@ class PlantDetails(APIView):
         return Response({
             "returnCode": "None"
         })
-        return Response({"d":"d"})
