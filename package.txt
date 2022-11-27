@@ -1,0 +1,18 @@
+{'response': {'header': {'resultCode': '00', 'resultMsg': '정상적으로 처리되었습니다.', 'requestParameter': {'grwtseVeCodeVal': '407001', 'sType': 'sCntntsSj', 'sWord': '세데베리'}},
+'body':
+{'items':
+{'item': [
+{'clNm': '페페로미아(Peperomia)속', 'cntntsNo': '204870', '
+cntntsSj': '페페로미아 그라베올렌스', 'imgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204870_MF_BIMG_01.jpg', 'imgUrl2': None,
+'scnm': '<i>Peperomia graveolens</i>', 'thumbImgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204870_MF_BIMG_01_TMB.jpg', 'thumbImgUrl2': None},
+{'clNm': '시노크라술라(Sinocrassula)속', 'cntntsNo': '204865', 'cntntsSj': '사마로', 'imgUrl1': 'http://www.nongsaro.go
+.kr/cms_contents/1122/204865_MF_BIMG_01.jpg', 'imgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204865_MF_BIMG_02.jpg', 'scnm': '<i>Sinocrassula yunnanensis</i>', 'thumbImgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204865_MF_BIMG_01_TMB.jpg', 'thumbImgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204865_MF_BIMG_02_TMB.jpg'},
+{'clNm': '가스테리아(Gasteria)속', 'cntntsNo': '204858',
+'cntntsSj': '자보', 'imgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204858_MF_BIMG_01.jpg', 'imgUrl2': 'http://www.nongsaro.go.
+kr/cms_contents/1122/204858_MF_BIMG_02.jpg', 'scnm': '<i>Gasteria gracilis</i> var. <i>minima</i>', 'thumbImgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204858_MF_BIMG_01_TMB.jpg', 'thumbImgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204858_MF_BIMG_02_TMB.jpg'}, {'clNm': '크라슐라(Crassula)속', 'cntntsNo': '204844', 'cntntsSj': '애성', 'imgUrl1': 'http://www.nongsaro.go.kr/cms_contents/
+1122/204844_MF_BIMG_01.jpg', 'imgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204844_MF_BIMG_02.jpg', 'scnm': '<i>Crassula nudicaulis</i> var. <i>herrei</i>', 'thumbImgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204844_MF_BIMG_01_TMB.jpg', 'thumbImgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204844_MF_BIMG_02_TMB.jpg'}, {'clNm': '크라슐라(Crassula)속', 'cntntsNo': '204843', 'cntn
+tsSj': '기천', 'imgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204843_MF_BIMG_01.jpg', 'imgUrl2': 'http://www.nongsaro.go.kr/cm
+s_contents/1122/204843_MF_BIMG_02.jpg', 'scnm': "<i>Crassula</i> 'Moonglow'", 'thumbImgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204843_MF_BIMG_01_TMB.jpg', 'thumbImgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204843_MF_BIMG_02_TMB.jpg'}, {'clNm': '크
+라슐라(Crassula)속', 'cntntsNo': '204841', 'cntntsSj': '백로', 'imgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204841_MF_BIMG_0
+1.jpg', 'imgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204841_MF_BIMG_02.jpg', 'scnm': '<i>Crassula deltoidea</i>', 'thumbImgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204841_MF_BIMG_01_TMB.jpg', 'thumbImgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204841_MF_BIMG_02_TMB.jpg'}, {'clNm': '크라슐라(Crassula)속', 'cntntsNo': '204839', 'cntntsSj': '크라슐라 ‘부다템플’', 'imgUrl1'
+: 'http://www.nongsaro.go.kr/cms_contents/1122/204839_MF_BIMG_01.jpg', 'imgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204839_MF_BIMG_02.jpg', 'scnm': "<i>Crassula</i> 'Buddha's Temple'", 'thumbImgUrl1': 'http://www.nongsaro.go.kr/cms_contents/1122/204839_MF_BIMG_01_TMB.jpg', 'thumbImgUrl2': 'http://www.nongsaro.go.kr/cms_contents/1122/204839_MF_BI,
