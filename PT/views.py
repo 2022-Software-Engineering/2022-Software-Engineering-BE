@@ -114,11 +114,11 @@ def requestPlantDetails(plantID):
 class SearchResultList(APIView):
     def get(self, request):
         # 요청변수
-        _searchType = request.data.get('searchType') # 사용자 선택 검색 언어
-        _searchWord = urllib.parse.unquote(request.data.get('searchWord')) # 사용자 입력 검색어
-        _growRate = request.data.get('growRate') # 사용자 선택 생장 속도
-        _manageLevel = request.data.get('manageLevel') # 사용자 선택 관리 수준
-        _manageDemand = request.data.get('manageDemand') # 사용자 선택 관리 요구도
+        _searchType = request.query_params.get('searchType') # 사용자 선택 검색
+        _searchWord = request.query_params.get('searchWord') # 사용자 입력 검색어
+        _growRate = request.query_params.get('growRate') # 사용자 선택 생장 속도
+        _manageLevel = request.query_params.get('manageLevel') # 사용자 선택 관리 수준
+        _manageDemand = request.query_params.get('manageDemand') # 사용자 선택 관리 요구도
 
         #parameter들, 사용자가 입력한 검색 조건으로만 parameter를 생성함
         params = {}
@@ -153,7 +153,7 @@ class SearchResultList(APIView):
 # 상세 정보 요청 API
 class PlantDetails(APIView):
     def get(self, request):
-        _plantID = request.data.get('plantID')
+        _plantID = request.query_params.get('plantID')
         # open API 요청
         plantDetails = requestPlantDetails(_plantID)
 
