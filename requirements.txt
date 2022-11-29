@@ -1,6 +1,7 @@
 asgiref==3.5.2
 certifi==2022.9.24
 charset-normalizer==2.1.1
+dj-database-url==1.0.0
 Django==3.2.16
 django-cors-headers==3.13.0
 django-request==1.6.1
@@ -15,4 +16,5 @@ six==1.16.0
 sqlparse==0.4.3
 typing_extensions==4.4.0
 urllib3==1.26.12
+whitenoise==6.2.0
 xmltodict==0.13.0
