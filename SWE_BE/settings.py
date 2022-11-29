@@ -56,6 +56,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
+    "https://2022-software-engineering.github.io/plantweb",
     "http://localhost:3000",
     "http://127.0.0.1:8000",
 ]
