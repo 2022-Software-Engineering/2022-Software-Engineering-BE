@@ -106,7 +106,7 @@ def requestPlantDetails(plantID):
         r['manageDemand'] = item['manageDemandNm'] #관리요구도
         r['fertilizer'] = item['frtlzrInfo'] #비료
         r['placeOfDeployment'] = targetStrRemover(item['batchPlaceInfo']) # 배치 장소
-        r['plantingTip'] = item['tipInfo'] #팁
+        r['plantingTip'] = targetStrRemover(item['tipInfo']) #팁
 
     return r
 
